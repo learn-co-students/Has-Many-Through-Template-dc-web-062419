@@ -37,6 +37,7 @@ Shred.new(cruiser_backside,sally)
 Shred.new(winter_funtimes,sally)
 
 # Mountain
+p "MOUNTAIN"
 p "Mountain.all returns an array with all mountains"
 p Mountain.all == [blackcomb,saulire,snowmass]
 p "runs returns an array with that mountain's runs"
@@ -45,25 +46,32 @@ p "snowboarders returns an array with that mountain's snowboarders"
 p saulire.snowboarders == [luke, leslie]
 p "percent_difficulty returns % of mountain's runs that are amazing"
 p saulire.percent_difficulty == 100
-p snowmass.percent_difficulty == 1.to_f/3
+p snowmass.percent_difficulty == (1.to_f/3 * 100).round(2)
 
 # Snowboarder
+puts "\n"
+p 'SNOWBOARDER'
+p "mountains returns an array with all mountains a snowboarder has skied"
+p luke.mountains == [blackcomb,saulire]
 p "Snowboarder.all returns an array with all snowboarders"
+p Snowboarder.all == [luke, leslie, bob, sally]
 p "add_shred creates a new instance of the Shred class for this snowboarder"
 luke.add_shred(icy_hell)
 p Shred.all.find{ |shred| shred.run == icy_hell && shred.snowboarder == luke }.class == Shred
 p "runs returns an array with all runs a snowboarder has skied"
 p leslie.runs == [diamond_death,yeti_crusher,icy_hell]
-p "mountains returns an array with all mountains a snowboarder has skied"
-p luke.mountains == [blackcomb,saulire]
 
 # Run
+puts "\n"
+p "RUN"
 p "Run.all returns an array with all runs"
 p Run.all == [diamond_death,yeti_crusher,tech_moguls,icy_hell,bunny_hopper,cruiser_backside,winter_funtimes]
 p "snowboarders returns an array with all snowboarders for that run"
 p yeti_crusher.snowboarders == [luke,leslie]
 
 # Shred
+puts "\n"
+p "SHRED"
 p "Shred.all returns an array with all shreds"
 p Shred.all.class == Array
-p Shred.all.size == 11
+p Shred.all.size == 12

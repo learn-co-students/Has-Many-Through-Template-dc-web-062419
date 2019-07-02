@@ -10,8 +10,13 @@ class Run
     self.class.all << self
   end
 
+  def shreds
+    Shred.all.select { |shred| shred.run == self }
+  end
+
   def snowboarders
     # returns all the snowboarders that have been on this run
+    shreds.map{ |shred| shred.snowboarder }.uniq
   end
 
   def self.all

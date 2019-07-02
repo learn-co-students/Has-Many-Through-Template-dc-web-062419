@@ -14,18 +14,18 @@ class Snowboarder
     Shred.new(run, self)
   end
 
+  def shreds
+    Shred.all.select { |shred| shred.snowboarder == self }
+  end
+
   def runs
     # returns the runs that a snowboarder has been on
-    Shred.all.select { |shred| shred.snowboarder == self }
+    shreds.map { |shred| shred.run }.uniq
   end
 
   def mountains
     # returns the mountains that a snowboarder has been to
-    Mountain.all.select do |mountain|
-      mountain.runs.each do |run|
-        self.runs.include?(run)
-      end
-    end
+    runs.map { |run| run.mountain }.uniq
   end
 
 
